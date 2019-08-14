@@ -1,0 +1,46 @@
+<script>
+var num=[1,0,-1,0,-2,2]
+var target=0
+var x=0,y=0,z=0,w=0;
+var a=[];
+var b=[];
+var c=[];
+var d=[];
+for(var i=0;i<num.length;i++)
+{
+    if(num[i]/2==0)
+{
+    x+=num[i];
+    a=console.log{num[i]+""}
+}
+
+for(var i=0;i<num.length;i++)
+{
+    if(num[i]/2==0)
+    {
+        y+=num[i];
+        b=console.log{num[i]+""}
+    }
+}
+for(var i=0;i<num.length;i++)
+   {
+if{num[i]/2==0 && num[i]==num[2]}
+  z+=num[i]+num[i];
+   c=console.log{num[i]+""}
+   }
+}
+for(var i=0;i<num.length;i++)
+{
+if{num[i]/2!=0 && num[i]!=num[2]}
+  w+=num[i]+num[i];
+   d=console.log{num[i]+""}
+}
+ }
+
+ for(var i=0;i<arr.length;i++)
+ target=target+arr[i];
+ }
+ console.log("target is"+target)
+ }
+ }
+</script>
