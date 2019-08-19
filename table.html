@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Assignment</title>
+<link rel="stylesheet" type="text/css" href="EXjquery.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<style type="text/css">
+  #filter{
+  border:none;
+}
+
+#main-table
+{
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: collapse;
+      border: 1px solid #cdcdcd;
+      padding: 5px;
+      text-align: left;
+}
+
+div{
+  display: inline-block;
+}
+</style>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $(".insert-student").click(function(){
+          var name = $("#name").val();
+          var subject = $("#subject").val();
+          var marks=$("#marks").val();
+          var markup = "<tr><td>" + name + "</td><td>" + subject + "</td><td>" + marks + "</td><td><input type='button' value='Delete'></td></tr>";
+          $("table tbody").append(markup);
+      });
+   });
+</script>
+</head>
+<body>
+  <table id="filter">
+      <tr>
+          <td>Filter by Subject</td>
+          <td><select>
+                 <option>Java</option>
+                 <option>Angular JS</option>
+                 <option>Node JS</option>
+                 <option>JavaScript</option>
+              </select>
+          </td>
+      </tr>
+
+</table>
+
+  <table id="main-table" border="1">
+      <thead>
+          <tr>
+              <th>Student Name</th>
+              <th >Subject</th>
+              <th >Marks Obtained</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Pinkar Kumari</td>
+              <td>Java</td>
+              <td>85.00</td>
+              <td><button>Delete</button></td>
+          </tr>
+      </tbody>
+  </table>
+  <button type="button">Sort by Name</button>
+  <button type="button">Sort by Marks</button>
+  <p>Total Records:<input type="text"></p>
+  <p>Insert Student</p><br>
+  <label>Student Name:-</label>
+  <input type="text" name="textbox" id="name"><br>
+  <label>Student Subject:-</label>
+  <input type="text" name="textbox" id="subject"><br>
+  <label>Marks Obtained:-</label>
+  <input type="text" name="textbox" id="marks"><br>
+  <button class="insert-student">Add Records</button>
+  <script type="text/javascript" src="EXjquery.js"></script>
+</body>
+</html>
+
