@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Add / Remove Table Rows Dynamically</title>
+<style type="text/css">
+    form{
+        margin: 20px 0;
+    }
+    form input, button{
+        padding: 5px;
+    }
+    table{
+        width: 100%;
+        margin-bottom: 20px;
+		border-collapse: collapse;
+    }
+    table, th, td{
+        border: 1px solid #cdcdcd;
+    }
+    table th, table td{
+        padding: 10px;
+        text-align: left;
+    }
+    tr:nth-child(even) {
+  background-color: #ffffb3 
+}
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".add-row").click(function(){
+            var name = $("#name").val();
+            var subject = $("#subject").val();
+            var marks = $("#marks").val();
+            var markup = "<tr class='content'><td>" + name + "</td><td>" + subject + "</td><td>" + marks + "</td><td>" + "<input type='button' value='delete' class='record' > </td></tr>";
+            $("table tbody").append(markup);
+        });
+        
+        // Find and remove selected table rows
+        $('.table  tbody').on('click','.record',function(){
+           
+            	
+                    $(this).closest("tr").remove();
+                    var count = $('#tbody tr').length;
+        $('#counter').html(count--);
+                
+    
+        });
+    });
+
+    // add row -----------------------------------------------------------
+    $(function() {
+        
+    $('.add-row').bind('click', function() {
+       
+        var count = $('#tbody tr').length;
+        $('#counter').html(count);
+    });
+});
+
+  
+function sort_name()
+{
+ var table=$('#services');
+ var tbody =$('#tbody');
+
+ tbody.find('tr').sort(function(a, b) 
+ {
+  if($('#name_order').val()=='asc') 
+  {
+   return $('td:first', a).text().localeCompare($('td:first', b).text());
+  }
+  else 
+  {
+   return $('td:first', b).text().localeCompare($('td:first', a).text());
+  }
+		
+ }).appendTo(tbody);
+	
+ var sort_order=$('#name_order').val();
+ if(sort_order=="asc")
+ {
+  document.getElementById("name_order").value="desc";
+ }
+ if(sort_order=="desc")
+ {
+  document.getElementById("name_order").value="asc";
+ }
+}
+
+
+function sort_marks() 
+{
+ var table=$('#services');
+ var tbody =$('#tbody');
+
+ tbody.find('tr').sort(function(a, b) 
+ {
+  if($('#age_order').val()=='asc') 
+  {
+   return $('td:nth-child(3)', a).text().localeCompare($('td:nth-child(3)', b).text());
+  }
+  else 
+  {
+   return $(' td:nth-child(3)', b).text().localeCompare($(' td:nth-child(3)', a).text());
+  }
+		
+ }).appendTo(tbody);
+	
+ var sort_order=$('#age_order').val();
+ if(sort_order=="asc")
+ {
+  document.getElementById("age_order").value="desc";
+ }
+ if(sort_order=="desc")
+ {
+  document.getElementById("age_order").value="asc";
+ }
+}
+$(function(){
+  $("#myTable").tablesorter();
+});
+
+function filterText()
+	{  
+		var rex = new RegExp($('#filterText').val());
+		if(rex =="/all/"){clearFilter()}else{
+			$('.content').hide();
+			$('.content').filter(function() {
+			return rex.test($(this).text());
+			}).show();
+	}
+	}
+	
+function clearFilter()
+	{
+		$('.filterText').val('');
+		$('.content').show();
+	}
+   
+</script>
+</head>
+<body>
+    <select id='filterText' style='display:inline-block' onchange='filterText()'>
+        <option disabled selected>Select</option>
+        <option value='java'>java</option>
+        <option value='c'>c</option>
+        <option value='android'>android</option>
+       
+        <option value='all'>all</option>
+    </select>
+
+    <table class="table" id="services">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+                <th id="m1">Obtained Marks</th>
+                <th>Delete Row</th>
+            </tr>
+        </thead>
+        <tbody  id="tbody" >
+             
+           
+        </tbody>
+    </table>
+    <input type="hidden" id="name_order" value="asc">
+   <input type="hidden" id="age_order" value="asc">
+ 
+    <button onclick="sort_name()">Sort by Name</button>
+    <button onclick="sort_marks()">Sort by marks</button><br>
+    Number of records: <span id="counter"></span>
+    <form>
+        <span> Insert Student Details</span><hr>
+       Student Name- &nbsp;<input type="text" id="name" placeholder=" Enter Name"><br>
+    StudentSubject-  <input type="text" id="subject" placeholder="Subject"><br>
+      Students  Marks-  <input type="text" id="marks" placeholder="Obtained Marks"><br>
+        <input type="button" class="add-row" value="Add row">
+        
+    </form>
+   
+</body> 
+</html>                            
